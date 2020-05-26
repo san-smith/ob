@@ -6,11 +6,18 @@ options {
 }
 
 sourceFile
-    : packageClause delimiter
+    : packageClause delimiter importDecl*
     ;
 
 packageClause
     : PACKAGE Identifier
+    ;
+
+importDecl
+    : 
+        ( IMPORT StringLiteral 
+        | IMPORT StringLiteral AS Identifier
+    ) delimiter
     ;
 
 delimiter

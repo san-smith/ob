@@ -31,6 +31,8 @@ NL: '\n' | '\r' '\n'?;
 // Section: keywords
 
 PACKAGE : 'package';
+IMPORT : 'import';
+AS : 'as';
 
 
 //===============================================================//
