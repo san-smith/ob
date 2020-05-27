@@ -79,6 +79,32 @@ fragment EscapedValue
 //===============================================================//
 // Section: numbers
 
+DECIMAL_LIT
+    : [1-9] [0-9]*
+    ;
+
+OCTAL_LIT
+    : '0' OCTAL_DIGIT*
+    ;
+
+HEX_LIT :
+    '0' [xX] HEX_DIGIT+
+    ;
+
+FLOAT_LIT
+    : DECIMALS ('.' DECIMALS? EXPONENT? | EXPONENT)
+    | '.' DECIMALS EXPONENT?
+    ;
+
+IMAGINARY_LIT
+    : (DECIMALS | FLOAT_LIT) 'i'
+    ;
+
+RUNE_LIT
+    : '\'' (~[\n\\] | EscapedValue) '\''
+    ;
+
+
 fragment DECIMALS
     : [0-9]+
     ;
