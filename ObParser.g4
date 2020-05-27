@@ -14,10 +14,7 @@ packageClause
     ;
 
 importDecl
-    : 
-        ( IMPORT StringLiteral 
-        | IMPORT StringLiteral AS Identifier
-    ) delimiter
+    : IMPORT StringLiteral (AS Identifier)? 
     ;
 
 delimiter
