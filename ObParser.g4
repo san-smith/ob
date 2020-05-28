@@ -8,7 +8,7 @@ options {
 sourceFile
     : packageClause delimiter
         (importDecl delimiter)* 
-        ((varDecl) delimiter)*
+        ((varDecl | constDecl) delimiter)*
     ;
 
 packageClause
@@ -26,10 +26,26 @@ delimiter
     ;
 
 varDecl
-    : VAR Identifier (
-        ( COMMA Identifier)* COLON Identifier
-        | ASSIGNMENT expression
+    : VAR varSpec
+    ;
+
+constDecl
+    : CONST varSpec
+    ;
+
+varSpec
+    : Identifier (
+        ( COMMA Identifier)* COLON type
+        | (COLON type)? ASSIGNMENT expression
         )
+    ;
+
+type
+    : typeName
+    ;
+
+typeName
+    : Identifier
     ;
 
 expression
@@ -60,6 +76,8 @@ basicLit
     | FLOAT_LIT
     | IMAGINARY_LIT
     | RUNE_LIT
+    | StringLiteral
+    | NULL
     ;
 
 integer

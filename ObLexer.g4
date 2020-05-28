@@ -34,7 +34,9 @@ PACKAGE : 'package';
 IMPORT : 'import';
 AS : 'as';
 VAR : 'var';
+CONST : 'const';
 NOT : 'not';
+NULL : 'null';
 
 
 //===============================================================//
