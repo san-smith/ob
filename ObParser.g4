@@ -25,6 +25,10 @@ delimiter
     | EOF
     ;
 
+
+//===============================================================//
+// Section: variable & const
+
 varDecl
     : VAR varSpec
     ;
@@ -40,6 +44,10 @@ varSpec
         )
     ;
 
+
+//===============================================================//
+// Section: type
+
 type
     : typeName
     ;
@@ -47,6 +55,10 @@ type
 typeName
     : Identifier
     ;
+
+
+//===============================================================//
+// Section: expression
 
 expression
     : primaryExpr
@@ -86,4 +98,22 @@ integer
     | HEX_LIT
     | IMAGINARY_LIT
     | RUNE_LIT
+    ;
+
+
+//===============================================================//
+// Section: statement
+
+statement
+    : varDecl
+    | constDecl
+    | block
+    ;
+
+block
+    : LCURL statement* RCURL
+    ;
+
+ifStatement
+    : IF expression COLON statement (ELSE statement)?
     ;
